@@ -1,29 +1,54 @@
-var express = require('express'); // ExpressJS 모듈을 추가
+var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
-var swig = require('swig');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
+
 
 var app = express();
+app.use(bodyParser.urlencoded({
+    extended: false
+})); /*------------post 사용을 위한 bodyParser등록----------*/
 
-
+app.use(session({ /*------------세션 설정부분----------*/
+    secret: '1234DSFs@adf1234!@#$asd',
+    resave: false,
+    saveUninitialized: true,
+    store: new MySQLStore({
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        password: '111111',
+        database: 'ddukddak'
+    })
+}));
 
 
 // view engine setup
-app.set('view engine', 'html');
-app.set('views', __dirname + '/views');
-app.engine('.html', swig.renderFile);
+app.set('view engine', 'ejs'); /*------------views ejs사용----------*/
+app.set('views', path.join(__dirname, 'views')); /*------------path 사용 views경로----------*/
+app.use(express.static(path.join(__dirname, 'public'))); /*------------path 사용 public경로----------*/
 
-app.set('view cache', false);
-swig.setDefaults({ cache: false });
+var passport = require('./routes/config/passport')(app); //passport 맨위로
 
-app.get('/', function (req, res) { // 웹에서 실행할 주소가 localhost:3000/ 이거일때를 선언
+var index=require('./routes/index');
+var ingredient=require('./routes/ingredient')();
+var recommend=require('./routes/recommend')();
+var auth=require('./routes/auth')(passport);
 
-    res.render('index'); // index.ejs로 써도 되고 index만 써도 파일 실행을 해줍니다.
-
-});
-
-
-
-app.listen(8282); //server 구동 포트 localhost:3000 여기에 쓰입니다.
+app.use('/', index);
+app.use('/ingredient', ingredient);
+app.use('/recommend', recommend);
+app.use('/auth', auth);
 
 
-console.log("Server running on port 8282");
+
+
+
+
+app.listen(3000, function () {
+    console.log("Server running on port 3000");
+
+}); //server 구동 포트 localhost:3000 여기에 쓰입니다.
+
+module.exports = app;
