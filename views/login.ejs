@@ -45,41 +45,48 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">내음식맛봐</a>
                     </li>
+                    <% if(!user) { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/login">로그인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/register">회원가입</a>
                     </li>
+                    <% } else { %>
+                    <li class="nav-item"><a class="nav-link">
+                        &nbsp; <%= user.displayName %>님</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
+                    <% } %>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="login-form">
-        <div class="main-div">
+    <div class="login-form" >
+        <div class="main-div" >
             <div class="panel">
                 <h1>로그인</h1>
                 <p>아이디와 비밀번호를 입력하세요.</p>
             </div>
-            <form id="Login">
+            <form id="Login" method="post">
 
                 <div class="form-group">
 
 
-                    <input type="" class="form-control" id="inputEmail" placeholder="ID">
+                    <input type="text" name="username" class="form-control"  placeholder="ID">
 
                 </div>
 
                 <div class="form-group">
 
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input type="password" name="password" class="form-control"  placeholder="Password">
 
                 </div>
                 <div class="forgot">
                     <a href="reset.html">비밀번호를 분실하였나요?</a>
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <input type="submit" class="btn btn-primary" value="Login">
 
             </form>
         </div>

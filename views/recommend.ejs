@@ -43,12 +43,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">내음식맛봐</a>
                     </li>
+                    <% if(!user) { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/login">로그인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/register">회원가입</a>
                     </li>
+                    <% } else { %>
+                    <li class="nav-item"><a class="nav-link">
+                        &nbsp; <%= user.displayName %>님</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
+                    <% } %>
                 </ul>
             </div>
         </div>

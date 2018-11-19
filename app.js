@@ -39,7 +39,7 @@ var auth=require('./routes/auth')(passport);
 app.use('/', index);
 app.use('/ingredient', ingredient);
 app.use('/recommend', recommend);
-app.use('/auth', auth);
+app.use('/auth/', auth);
 
 
 
