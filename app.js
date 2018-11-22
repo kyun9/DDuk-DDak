@@ -34,7 +34,7 @@ var passport = require('./routes/config/passport')(app); //passport 맨위로
 var index=require('./routes/index');
 var ingredient=require('./routes/ingredient')();
 var recommend=require('./routes/recommend')();
-var writing=require('./routes/writing')();
+var board=require('./routes/board')();
 var auth=require('./routes/auth')(passport);
 
 var admin=require('./routes/admin')();
@@ -42,7 +42,7 @@ var admin=require('./routes/admin')();
 app.use('/', index);
 app.use('/ingredient', ingredient);
 app.use('/recommend', recommend);
-app.use('/writing', writing);
+app.use('/board/', board);
 app.use('/auth/', auth);
 
 app.use('/admin/', admin);

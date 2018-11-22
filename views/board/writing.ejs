@@ -15,13 +15,14 @@
     <link href="../stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../stylesheets/css/mysheet.css" rel="stylesheet">
-    
+<!--    <link href="../public/stylesheets/css/mysheet.css" rel="stylesheet">-->
+     <link href="../stylesheets/css/ingred.css" rel="stylesheet">
+
 
 
 </head>
 
-<body id="LoginForm">
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-danger navbar-dark fixed-top">
@@ -64,36 +65,36 @@
         </div>
     </nav>
 
-    <div class="login-form" >
-        <div class="main-div" >
-            <div class="panel">
-                <h1>로그인</h1>
-                <p>아이디와 비밀번호를 입력하세요.</p>
+
+    <br>
+
+    <div class="container">
+        <caption>
+            <h2>글쓰기</h2>
+        </caption>
+        <br>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">글 제목</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="title">
             </div>
-            <form id="Login" method="post">
-
-                <div class="form-group">
-
-
-                    <input type="text" name="username" class="form-control"  placeholder="ID">
-
-                </div>
-
-                <div class="form-group">
-
-                    <input type="password" name="password" class="form-control"  placeholder="Password">
-
-                </div>
-                <div class="forgot">
-                    <a href="reset.html">비밀번호를 분실하였나요?</a>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Login">
-
-            </form>
-        </div>
-        
+            <div class="form-group">
+                <label for="exampleInputPassword1">글 내용</label>
+                <textarea class="form-control" rows="12" id="comment" placeholder="contents"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">이미지 파일 : </label>
+                <input type='file' class="loadFile bttn" name='upload' />
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <input type="button" value="목록으로" onclick="" />
+                <input type="button" value="글 등록" onclick="" />
+            </div>
+        </form>
     </div>
 
+    <br><br>
 
     <!-- Footer -->
     <footer class="py-5 bg-danger">

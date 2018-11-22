@@ -15,14 +15,13 @@
     <link href="../stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-<!--    <link href="../public/stylesheets/css/mysheet.css" rel="stylesheet">-->
-     <link href="../stylesheets/css/ingred.css" rel="stylesheet">
-
+    <link href="../stylesheets/css/mysheet.css" rel="stylesheet">
+    
 
 
 </head>
 
-<body>
+<body id="LoginForm">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-danger navbar-dark fixed-top">
@@ -45,7 +44,7 @@
                         <a class="nav-link" href="/recommend">추천요리</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">내음식맛봐</a>
+                        <a class="nav-link" href="/board">내음식맛봐</a>
                     </li>
                     <% if(!user) { %>
                     <li class="nav-item">
@@ -64,37 +63,82 @@
             </div>
         </div>
     </nav>
-
-
-    <br>
-
+    <br><br>
     <div class="container">
         <caption>
-            <h2>글쓰기</h2>
+            <h2>내음식맛봐 게시판</h2>
         </caption>
         <br>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">글 제목</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="title">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">글 내용</label>
-                <textarea class="form-control" rows="12" id="comment" placeholder="contents"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">이미지 파일 : </label>
-                <input type='file' class="loadFile bttn" name='upload' />
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between">
-                <input type="button" value="목록으로" onclick="" />
-                <input type="button" value="글 등록" onclick="" />
-            </div>
-        </form>
-    </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>날짜</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+                <tr>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                    <td>aaaaa</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <br>
+        <div class="d-flex float-right">
+            <input type="button" class="btn btn-dark" value="글 쓰기" onclick="location.href='/board/writing'"/>
+        </div>
+        <br>
+        <ul class="pagination justify-content-center" style="margin:20px 0">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div> <br><br>
 
-    <br><br>
 
     <!-- Footer -->
     <footer class="py-5 bg-danger">
