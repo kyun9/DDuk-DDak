@@ -16,7 +16,11 @@
 
     <!-- Custom styles for this template -->
     <link href="../stylesheets/css/mysheet.css" rel="stylesheet">
-    
+    <style>
+        th{
+            background-color: #FFD8D8;
+        }
+    </style>
 
 
 </head>
@@ -55,7 +59,7 @@
                     </li>
                     <% } else { %>
                     <li class="nav-item"><a class="nav-link">
-                        &nbsp; <%= user.displayName %>님</a></li>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
                     <% } %>
@@ -72,27 +76,29 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                   <strong>
                     <th>No.</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>날짜</th>
                     <th>조회수</th>
+                    </strong>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
+                    <td>2</td>
+                    <td>술먹고 속 해장할 때 좋은 북어탕~ </td> 
+                    <td>멋쟁이</td>
+                    <td>20181126</td>
+                    <td>3</td>
                 </tr>
                 <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
+                    <td>1</td>
+                    <td>매콤한 닭볶음탕 레시피</td>
+                    <td>이쁜이</td>
+                    <td>20181120</td>
+                    <td>25</td>
                 </tr>
                 <tr>
                     <td>aaaaa</td>
@@ -131,11 +137,11 @@
         </div>
         <br>
         <ul class="pagination justify-content-center" style="margin:20px 0">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:black">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:black">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:black">2</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:black">3</a></li>
+            <li class="page-item"><a class="page-link" href="#" style="color:black">Next</a></li>
         </ul>
     </div> <br><br>
 
