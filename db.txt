@@ -1,5 +1,6 @@
 CREATE DATABASE ddukddak CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+//users 테이블
 CREATE TABLE users (
    id       INT NOT NULL AUTO_INCREMENT,
    authId      VARCHAR(50) NOT NULL,
@@ -11,3 +12,21 @@ CREATE TABLE users (
    PRIMARY KEY(id),
    UNIQUE(authId)
 ) ENGINE = InnoDB;
+
+//board 게시판테이블
+CREATE TABLE board (
+  `idx` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL COMMENT '',
+  `writer` VARCHAR(50) NOT NULL COMMENT '',
+  `content` MEDIUMTEXT NULL COMMENT '',
+  `hit` INT(10) NOT NULL DEFAULT 0 COMMENT '',
+  `regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
+  `moddate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
+  PRIMARY KEY (`idx`)  COMMENT '')
+ENGINE = InnoDB
+
+//게시판 임시 데이터 생성
+INSERT INTO `board` (`title`, `writer`, `content`) VALUES
+	('첫번째 글', 'abcd01', '첫번째 글 내용'),
+	('두번째 글', 'abcd02', '두번째 글 내용'),
+	('세번째 글', 'abcd03', '세번째 글 내용');

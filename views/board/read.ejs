@@ -8,21 +8,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../images/ddukddak.ico">
-    
+
     <title>DDuk DDak</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-<!--    <link href="../public/stylesheets/css/mysheet.css" rel="stylesheet">-->
-     <link href="../stylesheets/css/ingred.css" rel="stylesheet">
-
+    <link href="../stylesheets/css/mysheet.css" rel="stylesheet">
+    <style>
+        th{
+            background-color: #FFD8D8;
+        }
+    </style>
 
 
 </head>
-
 <body>
+ <%
+    var read = rows[0];
+  %>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-danger navbar-dark fixed-top">
@@ -56,7 +61,8 @@
                     </li>
                     <% } else { %>
                     <li class="nav-item"><a class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= user.displayName %>님</a></li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
                     <% } %>
@@ -64,37 +70,61 @@
             </div>
         </div>
     </nav>
-
-
-    <br>
-
+    <br><br>
     <div class="container">
         <caption>
-            <h2>글쓰기</h2>
+            <h2>내음식맛봐 게시판</h2>
         </caption>
         <br>
-        <form method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">글 제목</label>
-                <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="title">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">글 내용</label>
-                <textarea class="form-control" name="content" rows="12" id="comment" placeholder="contents"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">이미지 파일 : </label>
-                <input type='file' name="photo" class="loadFile btn " name='upload' />
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between">
-                <input type="button" class="btn btn-dark" value="목록으로" onclick="location.href='/board'" />
-                <input type="submit" class="btn btn-dark" value="글 등록" onclick="" />
-            </div>
-        </form>
-    </div>
+        <hr>
 
-    <br><br>
+
+        <table class="table">
+            <tr>
+                <th>번호</th>
+                <td>
+                    <%=read.idx%>
+                </td>
+                <th>조회수</th>
+                <td>
+                    <%=read.hit%>
+                </td>
+                <th>글쓴이</th>
+                <td>
+                    <%=read.writer%>
+                </td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td colspan="5">
+                    <%=read.title%>
+                </td>
+            </tr>
+            <tr>
+                <th>작성일</th>
+                <td colspan="2">
+                    <%=read.regdate%>
+                </td>
+                <th>수정일</th>
+                <td colspan="2">
+                    <%=read.moddate%>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" height="400">
+                    <%=read.content%>
+                </td>
+            </tr>
+
+        </table>
+        <hr>
+        <div class="d-flex float-right">
+            <input type="button" class="btn btn-dark" value="목록으로" onclick="location.href='/board'" />
+        </div>
+        <br>
+
+    </div> <br><br>
+
 
     <!-- Footer -->
     <footer class="py-5 bg-danger">

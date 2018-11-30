@@ -6,6 +6,7 @@ var MySQLStore = require('express-mysql-session')(session);
 
 
 var app = express();
+
 app.use(bodyParser.urlencoded({
     extended: false
 })); /*------------post 사용을 위한 bodyParser등록----------*/
@@ -34,7 +35,7 @@ var passport = require('./routes/config/passport')(app); //passport 맨위로
 var index=require('./routes/index');
 var ingredient=require('./routes/ingredient')();
 var recommend=require('./routes/recommend')();
-var board=require('./routes/board')();
+var board=require('./routes/board')(passport);
 var auth=require('./routes/auth')(passport);
 
 var admin=require('./routes/admin')();

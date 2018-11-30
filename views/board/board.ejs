@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../images/ddukddak.ico">
-    
+
     <title>DDuk DDak</title>
 
     <!-- Bootstrap core CSS -->
@@ -25,7 +25,7 @@
 
 </head>
 
-<body id="LoginForm">
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-danger navbar-dark fixed-top">
@@ -59,7 +59,8 @@
                     </li>
                     <% } else { %>
                     <li class="nav-item"><a class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= user.displayName %>님</a></li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
                     <% } %>
@@ -76,16 +77,32 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                   <strong>
-                    <th>No.</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>날짜</th>
-                    <th>조회수</th>
+                    <strong>
+                        <th>No.</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>날짜</th>
                     </strong>
                 </tr>
             </thead>
             <tbody>
+               
+      <%
+      for(var i = 0; i<rows.length; i++)
+      {
+      %>
+      <tr>
+        <td><%=rows[i].idx%></td>
+          <td><a href="/board/read/<%=rows[i].title%>"><%=rows[i].title%></a></td>
+        <td><%=rows[i].writer%></td>
+        <td><%=rows[i].hit%></td>
+        <td><%=rows[i].moddate%></td>
+      </tr>
+      <%
+      }
+      %>
+                <!--
                 <tr>
                     <td>2</td>
                     <td>술먹고 속 해장할 때 좋은 북어탕~ </td> 
@@ -128,12 +145,13 @@
                     <td>aaaaa</td>
                     <td>aaaaa</td>
                 </tr>
+-->
             </tbody>
         </table>
         <hr>
         <br>
         <div class="d-flex float-right">
-            <input type="button" class="btn btn-dark" value="글 쓰기" onclick="location.href='/board/writing'"/>
+            <input type="button" class="btn btn-dark" value="글 쓰기" onclick="location.href='/board/writing'" />
         </div>
         <br>
         <ul class="pagination justify-content-center" style="margin:20px 0">
