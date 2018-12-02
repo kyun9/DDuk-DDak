@@ -1,7 +1,8 @@
       module.exports = function () {
           var route = require('express').Router();
           var conn = require('./config/db')();
-
+          var formidable = require('formidable'); // form 태그 데이터들을 가져오는 모듈
+          var fs = require('fs-extra'); // 파일을 복사하거나 디렉토리 복사하는 모듈
 
           route.get('/', function (req, res) {
               var sql = 'select idx,title,writer,hit,DATE_FORMAT(moddate, "%Y/%m/%d %T") as moddate from board';
@@ -34,13 +35,44 @@
                * 때문에 request 객체를 통해 body에 접근 후 데이터를 가지고 옵니다.
                *  */
               var body = req.body;
-              var writer =req.user.displayName;
+              var writer = req.user.displayName;
               var title = req.body.title;
               var content = req.body.content;
+              var photo = req.body.photo;
+
+
+              var name = "";
+              var ImgPath = "";
+              var form = new formidable.IncomingForm();
+
+              form.parse(req, function (err, fields, files) {
+                  name = req.user.displayName;
+              });
+              form.on('end', function (fields, files) {
+                  for (var i = 0; i < this.openedFiles.length; i++) {
+                      var temp_path = this.openedFiles[i].path;
+                      var file_name = this.openedFiles[i].name;
+                      var index = file_name.indexOf('/');
+                      var new_file_name = file_name.substring(index + 1);
+                      var new_location = 'public/resources/images/' + name + '/';
+                      var db_new_location = 'resources/images/' + name + '/';
+                      //실제 저장하는 경로와 db에 넣어주는 경로로 나눠 주었는데 나중에 편하게 불러오기 위해 따로 나눠 주었음
+                      ImgPath = db_new_location + file_name;
+                      fs.copy(temp_path, new_location + file_name, function (err) { // 이미지 파일 저장하는 부분임
+                          if (err) {
+                              console.error(err);
+                          }
+                      });
+                  }
+              });
+//              var photo = {
+//                  ImgPath: ImgPath
+//              }; /////////************************************************************이 부분 이상 확인해보기
+
 
               conn.beginTransaction(function (err) {
                   if (err) console.log(err);
-                  conn.query('insert into board(title,writer,content) values(?,?,?)', [title, writer, content], function (err) {
+                  conn.query('insert into board(title,writer,content,ImgPath) values(?,?,?,?)', [title, writer, content, photo], function (err) {
                       if (err) {
                           /* 이 쿼리문에서 에러가 발생했을때는 쿼리문의 수행을 취소하고 롤백합니다.*/
                           console.log(err);
@@ -66,6 +98,7 @@
                       })
                   })
               })
+
           })
 
 
@@ -110,11 +143,8 @@
           });
 
 
-          //          route.get('/read', function (req, res) {
-          //              res.render('board/read', {
-          //                  user: req.user
-          //              });
-          //          });
+
+         
 
           return route;
       };

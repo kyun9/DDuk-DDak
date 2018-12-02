@@ -102,56 +102,18 @@
       <%
       }
       %>
-                <!--
-                <tr>
-                    <td>2</td>
-                    <td>술먹고 속 해장할 때 좋은 북어탕~ </td> 
-                    <td>멋쟁이</td>
-                    <td>20181126</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>매콤한 닭볶음탕 레시피</td>
-                    <td>이쁜이</td>
-                    <td>20181120</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                </tr>
-                <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                </tr>
-                <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                </tr>
-                <tr>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                    <td>aaaaa</td>
-                </tr>
--->
+ 
             </tbody>
         </table>
         <hr>
         <br>
         <div class="d-flex float-right">
+           <% if(!user) { %>
+           <p><strong>로그인해야 글을 쓸 수 있습니다.&nbsp;&nbsp;&nbsp;</strong></p>
+           <input type="button" class="btn btn-dark" value="로그인하기" onclick="location.href='/auth/login'" />
+           <% }else{ %>
             <input type="button" class="btn btn-dark" value="글 쓰기" onclick="location.href='/board/writing'" />
+            <% } %>
         </div>
         <br>
         <ul class="pagination justify-content-center" style="margin:20px 0">
