@@ -74,14 +74,18 @@
             <h2>글쓰기</h2>
         </caption>
         <br>
-        <form action='/board/upload/<%= user.id %>' method="post" enctype="multipart/form-data">
-            <div class="form-group">
+        <div class="form-group">
+            <form action='/board/upload/<%= user.id %>' method="post" enctype="multipart/form-data">
                 <label for="exampleInputPassword1">이미지 파일 : </label>
                 <input type='file' name="upload" class="loadFile btn " name='upload' />
-                <input type="submit" class="btn btn-dark" value="이미지 등록" onclick="" /><br>
-                <img src="../<%= user.tmp %>" width="250" height="250" />
-            </div>
-        </form>
+                <input type="submit" class="btn btn-dark" value="이미지 등록" onclick="" />
+            </form>
+            <form action='/board/upload/<%= user.id %>/dlt' method="post" enctype="multipart/form-data">
+                <input type="submit" class="btn btn-dark" value="이미지 삭제" onclick="" />
+            </form>
+            <br>
+            <img src="../<%= user.tmp %>" width="250" height="250" />
+        </div>
         <form method="post" action="/board/writing">
             <div class="form-group">
                 <label for="exampleInputEmail1">글 제목</label>

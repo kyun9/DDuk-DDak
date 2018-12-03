@@ -27,7 +27,7 @@
               var name = "";
               var ImgPath = "";
               var form = new formidable.IncomingForm();
-              
+
               form.parse(req, function (err, fields, files) {
                   name = req.user.displayName;
               });
@@ -77,6 +77,29 @@
 
           });
 
+          /*----------------POST방식 --- 이미지 삭제--------------*/
+          route.post('/upload/:id/dlt', function (req, res) {
+
+              var id = req.params.id;
+              // var img = {
+              //
+              //   ImgPath: ''
+              // };
+              var sql = 'UPDATE users SET tmp=null WHERE id=?';
+              conn.query(sql, id, function (err, results) {
+                  if (err) {
+                      console.log(err);
+                      res.status(500);
+
+                  } else {
+
+                      res.redirect('/board/writing');
+
+                  }
+              });
+
+          });
+
           route.get('/writing', function (req, res) {
               res.render('board/writing', {
                   user: req.user
@@ -93,7 +116,7 @@
               var title = req.body.title;
               var content = req.body.content;
               var photo = req.user.tmp;
-             
+
 
               conn.beginTransaction(function (err) {
                   if (err) console.log(err);
