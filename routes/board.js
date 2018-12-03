@@ -23,6 +23,60 @@
           //              });
           //          });
 
+          route.post('/upload/:id', function (req, res) {
+              var name = "";
+              var ImgPath = "";
+              var form = new formidable.IncomingForm();
+              
+              form.parse(req, function (err, fields, files) {
+                  name = req.user.displayName;
+              });
+
+              form.on('end', function (fields, files) {
+                  for (var i = 0; i < this.openedFiles.length; i++) {
+                      var temp_path = this.openedFiles[i].path;
+                      var file_name = this.openedFiles[i].name;
+                      var index = file_name.indexOf('/');
+                      var new_file_name = file_name.substring(index + 1);
+                      var new_location = 'public/resources/images/' + name + '/';
+                      var db_new_location = 'resources/images/' + name + '/';
+
+                      //실제 저장하는 경로와 db에 넣어주는 경로로 나눠 주었는데 나중에 편하게 불러오기 위해 따로 나눠 주었음
+
+                      ImgPath = db_new_location + file_name;
+                      fs.copy(temp_path, new_location + file_name, function (err) { // 이미지 파일 저장하는 부분임
+                          if (err) {
+                              console.error(err);
+                          }
+
+                      });
+
+                  }
+
+                  var id = req.params.id;
+                  var img = {
+
+                      tmp: ImgPath
+                  };
+                  var sql = 'UPDATE users SET ? WHERE id=?';
+                  conn.query(sql, [img, id], function (err, results) {
+                      if (err) {
+                          console.log(err);
+                          res.status(500);
+
+                      } else {
+
+                          res.redirect('/board/writing');
+
+                      }
+                  });
+
+              });
+
+
+
+          });
+
           route.get('/writing', function (req, res) {
               res.render('board/writing', {
                   user: req.user
@@ -38,37 +92,8 @@
               var writer = req.user.displayName;
               var title = req.body.title;
               var content = req.body.content;
-              var photo = req.body.photo;
-
-
-              var name = "";
-              var ImgPath = "";
-              var form = new formidable.IncomingForm();
-
-              form.parse(req, function (err, fields, files) {
-                  name = req.user.displayName;
-              });
-              form.on('end', function (fields, files) {
-                  for (var i = 0; i < this.openedFiles.length; i++) {
-                      var temp_path = this.openedFiles[i].path;
-                      var file_name = this.openedFiles[i].name;
-                      var index = file_name.indexOf('/');
-                      var new_file_name = file_name.substring(index + 1);
-                      var new_location = 'public/resources/images/' + name + '/';
-                      var db_new_location = 'resources/images/' + name + '/';
-                      //실제 저장하는 경로와 db에 넣어주는 경로로 나눠 주었는데 나중에 편하게 불러오기 위해 따로 나눠 주었음
-                      ImgPath = db_new_location + file_name;
-                      fs.copy(temp_path, new_location + file_name, function (err) { // 이미지 파일 저장하는 부분임
-                          if (err) {
-                              console.error(err);
-                          }
-                      });
-                  }
-              });
-//              var photo = {
-//                  ImgPath: ImgPath
-//              }; /////////************************************************************이 부분 이상 확인해보기
-
+              var photo = req.user.tmp;
+             
 
               conn.beginTransaction(function (err) {
                   if (err) console.log(err);
@@ -103,7 +128,8 @@
 
 
           route.get('/read/:title', function (req, res, next) {
-
+              var ImgPath = req.params.ImgPath;
+              console.log("ImgPath : " + ImgPath);
               var title = req.params.title;
               console.log("title : " + title);
 
@@ -118,7 +144,7 @@
                               console.error('rollback error1');
                           })
                       }
-                      conn.query('select idx,title,content,writer,hit,DATE_FORMAT(moddate, "%Y/%m/%d %T")' +
+                      conn.query('select idx,title,content,writer,ImgPath,hit,DATE_FORMAT(moddate, "%Y/%m/%d %T")' +
                           ' as moddate,DATE_FORMAT(regdate, "%Y/%m/%d %T") as regdate from board where title=?', [title],
                           function (err, rows) {
                               if (err) {
@@ -144,7 +170,7 @@
 
 
 
-         
+
 
           return route;
       };
