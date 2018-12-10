@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../images/ddukddak.ico">
-    
+
     <title>DDuk DDak</title>
 
     <!-- Bootstrap core CSS -->
@@ -17,11 +17,29 @@
     <!-- Custom styles for this template -->
     <link href="../stylesheets/css/mysheet.css" rel="stylesheet">
 
+    <!--      식단 api-->
+    <!--
+    <link href="http://api.nongsaro.go.kr/css/api.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://api.nongsaro.go.kr/js/framework.js"></script>
+    <script type="text/javascript" src="http://api.nongsaro.go.kr/js/openapi_nongsaro.js"></script>
 
+    <script type="text/javascript">
+        nongsaroOpenApiRequest.apiKey = "20181109EQDUHW95LIXNGC1KFNTJG";
+        nongsaroOpenApiRequest.serviceName = "cropTechInfo";
+        nongsaroOpenApiRequest.operationName = "recomendDietDtl";
+        nongsaroOpenApiRequest.htmlArea = "nongsaroApiLoadingArea";
+        nongsaroOpenApiRequest.callback = "http://127.0.0.1:3000/recommend";
+
+    </script>
+-->
+    <!--
+        추천식단 오픈api 연결
+    <script type="text/javascript" src="../javascripts/rfood.js"></script>
+-->
 </head>
 
 <body>
-     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-danger navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand title" href="/">DDuk DDak</a>
@@ -53,7 +71,8 @@
                     </li>
                     <% } else { %>
                     <li class="nav-item"><a class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= user.displayName %>님</a></li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
                     <% } %>
@@ -62,110 +81,68 @@
         </div>
     </nav>
 
-    
 
-     <!-- Page Content -->
+
+    <!-- Page Content -->
     <div class="container">
 
-      <!-- Page Heading -->
-      <h1 class="my-4">추천요리
-        <small>Secondary Text</small>
-      </h1>
+        <!-- Page Heading -->
+        <h1 class="my-4">추천요리
+            <small>Secondary Text</small>
+        </h1>
 
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Two</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Three</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Four</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project Five</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">dd</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.row -->
 
-      <!-- Pagination -->
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true" style="color:black">&laquo;</span>
-            <span class="sr-only" style="color:black">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" style="color:black">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" style="color:black">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" style="color:black">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true" style="color:black">&raquo;</span>
-            <span class="sr-only" style="color:black">Next</span>
-          </a>
-        </li>
-      </ul>
+
+        <div class="row">
+            <%
+      for(var i = 0; i<rows.length; i++)
+      {
+      %>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="<%=rows[i].img%>" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">
+                                <%=rows[i].foodname%></a>
+                        </h4>
+                        <p class="card-text">
+                            <%=rows[i].subscript%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <%
+      }
+      %>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true" style="color:black">&laquo;</span>
+                    <span class="sr-only" style="color:black">Previous</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" style="color:black">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" style="color:black">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" style="color:black">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true" style="color:black">&raquo;</span>
+                    <span class="sr-only" style="color:black">Next</span>
+                </a>
+            </li>
+        </ul>
 
     </div>
     <!-- Footer -->
@@ -182,6 +159,9 @@
 
     <script src="../stylesheets/vendor/jquery/jquery.min.js"></script>
     <script src="../stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
 
 </body>
 

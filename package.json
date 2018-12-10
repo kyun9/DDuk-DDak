@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "consolidate": "^0.15.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
@@ -19,8 +20,12 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pbkdf2-password": "^1.2.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
     "session": "^0.1.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "xml-js": "^1.6.8",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {},
   "scripts": {
