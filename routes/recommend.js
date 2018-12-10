@@ -23,13 +23,13 @@
               method: 'GET'
           }, function (error, response, body) {
               //              console.log('Status', response.statusCode);
-              //              console.log('Headers', JSON.stringify(response.headers));
-              //              console.log('Response Received', body);
+//                            console.log('Headers', JSON.stringify(response.headers));
+//                            console.log('Response Received', body);
               parser.parseString(body, function (err, result) {
                   var data = result.response.body[0].items[0].item;
                   var length = data.length;
-                  var destinationHTML = "";
-                  //                  console.log(data);
+//                  var destinationHTML = "";
+//                                    console.log(data);
                   
                   
                   conn.query('delete from recommendfood', function (err, results) {
@@ -44,7 +44,7 @@
                   
                   for (var i = 0; i < length; ++i) {
                       var fdNm = data[i].fdNm;
-                      // 카테고리가 관광지, 문화시설일 경우
+                      
                       //    if ('A0101' <= cat2 && cat2 <= 'A0206')
                       //    {
                       console.log(fdNm);
@@ -66,16 +66,16 @@
                       //        if (data[i].addr1)
                       //            addr = data[i].addr1[0];
 
-                      destinationHTML += ckngMthInfo + '<br>';
+//                      destinationHTML += ckngMthInfo + '<br>';
                       //        destinationHTML += longitude + '<br>';
                       //        destinationHTML += latitude + '<br>';
 
                       //        if (tel != "")
                       //            destinationHTML += tel + '<br>';
                       //        destinationHTML += addr + '<br>';
-                      if (image != "")
-                          destinationHTML += "<img src=" + image + ">";
-                      destinationHTML += '<br><br>'
+//                      if (image != "")
+//                          destinationHTML += "<img src=" + image + ">";
+//                      destinationHTML += '<br><br>'
 
                       //    } // end category if
 

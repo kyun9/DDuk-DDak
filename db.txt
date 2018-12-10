@@ -17,10 +17,11 @@ CREATE TABLE users (
 
 //openapi 연동 데이터베이스
 CREATE TABLE recommendfood (
+   fid       INT NOT NULL AUTO_INCREMENT,
    foodname      VARCHAR(255) NOT NULL,
    img   VARCHAR(255) NOT NULL,
    subscript   VARCHAR(255) NOT NULL,
-   PRIMARY KEY(foodname)
+   PRIMARY KEY(fid)
 ) ENGINE = InnoDB;
 
 //connectub 유저와 게시판 연결테이블

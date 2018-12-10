@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../images/ddukddak.ico">
-    
+
     <title>DDuk DDak</title>
 
     <!-- Bootstrap core CSS -->
@@ -55,10 +55,13 @@
                     </li>
                     <% } else { %>
                     <li class="nav-item"><a class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= user.displayName %>님</a></li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
-                    <% } %>
+                    <% if(user.displayName.trim() == 'admin') {%>
+                    <li class="nav-item"><a class="nav-link" href="/admin/adminMain">관리자페이지</a></li>
+                    <% }} %>
 
                 </ul>
             </div>
@@ -69,7 +72,7 @@
 
     <!-- Header with Background Image -->
     <header>
-<!--       style="height: 350px"-->
+        <!--       style="height: 350px"-->
         <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

@@ -60,7 +60,9 @@
                             <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
-                    <% } %>
+                    <% if(user.displayName.trim() == 'admin') {%>
+                    <li class="nav-item"><a class="nav-link" href="/admin/adminMain">관리자페이지</a></li>
+                    <% }} %>
                 </ul>
             </div>
         </div>
@@ -85,7 +87,7 @@
                     <div class="card-body">
                         <h2 class="card-title">배추</h2>
                         <p class="card-text">배추는 잎과 줄기뿐 아니라 뿌리에도 비타민이 풍부하게 함유되어 있어 어느 하나 버릴 것이 없는 채소다.또, 식이 섬유소가 풍부하여 장운동을 촉진시키고 정장작용에 도움을 준다.</p>
-                        <a href="https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%B6%94" class="btn btn-dark" >Read More &rarr;</a>
+                        <a href="https://ko.wikipedia.org/wiki/%EB%B0%B0%EC%B6%94" class="btn btn-dark">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
                         배추의 제철은 <strong>11월~12월</strong>

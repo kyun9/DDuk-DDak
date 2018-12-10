@@ -37,7 +37,7 @@ var ingredient=require('./routes/ingredient')();
 var recommend=require('./routes/recommend')();
 var board=require('./routes/board')(passport);
 var auth=require('./routes/auth')(passport);
-
+var mypage=require('./routes/mypage')();
 var admin=require('./routes/admin')();
 
 app.use('/', index);
@@ -45,8 +45,8 @@ app.use('/ingredient', ingredient);
 app.use('/recommend', recommend);
 app.use('/board/', board);
 app.use('/auth/', auth);
-
 app.use('/admin/', admin);
+app.use('/mypage', mypage);
 
 
 

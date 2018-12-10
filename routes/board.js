@@ -150,6 +150,25 @@
           })
 
 
+          route.route('/postDelete').post(function (req, res) {
+              var postId = req.body.postId;
+              conn.beginTransaction(function () {
+                  conn.query('delete from board where idx=?', [postId], function (err) {
+                      if (err) {
+                          console.log(err);
+                      } else {
+                          conn.commit(function (err) {
+                              if (err) {
+                                  console.log(err);
+                              } else {
+                                  res.redirect('/board');
+                              }
+                          });
+                      }
+                  });
+              });
+          });
+
           route.get('/read/:title', function (req, res, next) {
               var ImgPath = req.params.ImgPath;
               console.log("ImgPath : " + ImgPath);

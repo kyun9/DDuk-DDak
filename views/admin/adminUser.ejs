@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="imges/favicon.ico">
+
+    <title>뚝딱 관리자 회원 관리 페이지</title>
+
+    <link href="../stylesheets/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href="../stylesheets/css/album.css" rel="stylesheet" type='text/css'>
+    <link href="../stylesheets/css/mysheet.css" rel="stylesheet" type='text/css'>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand title" href="/">DDuk DDak</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/adminMain">관리자 페이지</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">뚝딱 관리자 회원 관리 페이지</h1>
+                <p class="lead text-muted">뚝딱 관리자는 여기서 회원을 관리할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <h2 class="sub-header">회원리스트</h2>
+            <hr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <strong>
+                            <th>회원 번호</th>
+                            <th>회원 아이디</th>
+                            <th>회원 이름</th>
+                            <th>회원 이메일</th>
+                        </strong>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    for(var i=0; i<rows.length; i++){
+                    %>
+                    <tr>
+                        <td class="userId">
+                            <%=rows[i].id%>
+                        </td>
+                        <td>
+                            <%=rows[i].username%>
+                        </td>
+                        <td>
+                            <%=rows[i].displayName%>
+                        </td>
+                        <td>
+                            <%=rows[i].email%>
+                        </td>
+                        <td>
+                            <input class="deleteUser btn btn-danger" type="button" value="삭제" />
+                        </td>
+                    </tr>
+                    <%
+                    }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <hr>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-left text-white">Copyright &copy; DDuk DDak food
+                <br>뚝딱팀 경 현, 김재익
+                <br>2018 모바일웹 프로젝트</p>
+        </div>
+    </footer>
+    <script src="../stylesheets/js/jquery-3.3.1.min.js"></script>
+    <script src="../stylesheets/js/vendor/popper.min.js"></script>
+    <script src="../stylesheets/js/bootstrap.min.js"></script>
+    <script src="../stylesheets/js/vendor/holder.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).delegate('.deleteUser.btn', 'click', function() {
+                var userId = $(this).parent().siblings('.userId').text();
+                var cfirm = confirm("정말 삭제하시겠습니까?");
+
+                if (cfirm) {
+                    window.location.href = 'userDelete/'+userId;
+                } else {
+                    console.log('취소');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

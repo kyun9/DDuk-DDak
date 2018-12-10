@@ -25,8 +25,9 @@
 
 
 </head>
+
 <body>
- <%
+    <%
     var read = rows[0];
   %>
 
@@ -61,12 +62,14 @@
                         <a class="nav-link" href="/auth/register">회원가입</a>
                     </li>
                     <% } else { %>
-                    <li class="nav-item"><a class="nav-link">
+                    <li class="nav-item"><a class="nav-link displayName">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <%= user.displayName %>님</a></li>
                     <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                     <li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a></li>
-                    <% } %>
+                    <% if(user.displayName.trim() == 'admin') {%>
+                    <li class="nav-item"><a class="nav-link" href="/admin/adminMain">관리자페이지</a></li>
+                    <% }} %>
                 </ul>
             </div>
         </div>
@@ -83,7 +86,7 @@
         <table class="table">
             <tr>
                 <th>번호</th>
-                <td>
+                <td class="postId">
                     <%=read.idx%>
                 </td>
                 <th>조회수</th>
@@ -91,8 +94,8 @@
                     <%=read.hit%>
                 </td>
                 <th>글쓴이</th>
-                <td>
-                    <%=read.writer%>
+                <td class="writer">
+                    <%=read.writer%>님
                 </td>
             </tr>
             <tr>
@@ -113,14 +116,18 @@
             </tr>
             <tr>
                 <td colspan="6" height="400">
-                   <img src="../<%=read.ImgPath%>" width="250" height="250" />
-                    <p><%=read.content%></p>
+                    <img src="../<%=read.ImgPath%>" width="250" height="250" /><br><br>
+                    <%=read.content%>
                 </td>
             </tr>
 
         </table>
         <hr>
-        <div class="d-flex float-right">
+        <div class="d-flex float-right inline">
+            <form class="deleteForm" action="/board/postDelete" method="post">
+                <input type="hidden" name="postId" value="<%=read.idx%>" />
+                <input type="button" class="deletePost btn btn-danger" value="삭제하기" />
+            </form>
             <input type="button" class="btn btn-dark" value="목록으로" onclick="location.href='/board'" />
         </div>
         <br>
@@ -142,6 +149,23 @@
 
     <script src="../stylesheets/vendor/jquery/jquery.min.js"></script>
     <script src="../stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var writer = $('.writer').text().trim();
+            var displayName = $('.displayName').text().trim();
+            if (writer != displayName){ 
+                $('.deletePost').hide();
+                console.log("다름");
+            }
+
+            $(document).delegate('.deletePost', 'click', function() {
+                var userId = $(this).parent().siblings('.userId').text();
+                var cfirm = confirm("정말 삭제하시겠습니까?");
+                if (cfirm) $('.deleteForm').submit();
+            });
+        });
+
+    </script>
 
 </body>
 
