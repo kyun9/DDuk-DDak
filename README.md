@@ -34,4 +34,4 @@ also is able to communicate through a board.
 
 ### Main Page
 
-<img src="main.png" width="90%"></img>
+<img src="main.PNG" width="90%"></img>
