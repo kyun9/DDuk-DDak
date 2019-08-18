@@ -19,6 +19,7 @@ also is able to communicate through a board.
 
 > Front-end
 
+- Bootstrap
 - HTML5, CSS3, JavaScript  
 - jQuery
 - AJAX
