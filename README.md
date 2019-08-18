@@ -34,4 +34,4 @@ also is able to communicate through a board.
 
 ### Main Page
 
-[![Watch the video](Main.PNG)]
+<img src="Main.png" width="90%"></img>
